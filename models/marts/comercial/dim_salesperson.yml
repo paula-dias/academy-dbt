@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: dim_salesperson
+    description: Dimensão com as informações dos vendedores.
+    columns:
+      - name: sk_vendedor
+        description: É a chave primária da dimensão de vendedor.
+        tests:
+          - unique
+          - not_null
+          
+      - name: cota_venda
+        description: É a cota de vendas que o vendedor precisa atingir.
+
+      - name: bonus
+        description: É o bonus que receberá po atingir a cota.
+        
+      - name: comissao
+        description: É a comissão referente as vendas.
+
+      - name: vendas_ano
+        description: É as vendas efetuadas dutante o ano vigente
+
+      - name: vendas_ultimo_ano
+        description: É as vendas realizadas no último ano.
+
+      - name: nome_completo
+        description: É o nome completo.
+
+      - name: identificacao_nacional
+        description: É a identificação nacional.
+
+      - name: funcao
+        description: É a função que exerce.

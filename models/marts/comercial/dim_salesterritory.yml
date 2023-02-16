@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: dim_salesterritory
+    description: Dimensão com as informações de vendas por localização.
+    columns:
+      - name: sk_venda_territorio
+        description: É a chave primária da dimensão de vendas por território.
+        tests:
+          - unique
+          - not_null
+
+      - name: id_endereco
+        description: É a chave primária da tabela de endereco.
+
+      - name: id_estado
+        description: É a chave primária da tabela de estado.
+
+      - name: codigo_estado
+        description: É o código do estado.
+        
+      - name: codigo_pais
+        description: É o código do país.
+
+      - name: endereco
+        description: Apresenta as informações do endereço (rua/avenida, número).
+
+      - name: nome_cidade
+        description: É o nome da cidade.
+
+      - name: nome_estado
+        description: É o nome do estado.
+
+      - name: nome_pais
+        description: É o nome do país.
+
+      - name: nome_territorio
+        description: É o nome do território.
+
+      - name: vendas_ano
+        description: É a quantidade de vendas no ano.
+
+      - name: vendas_ultimo_ano
+        description: É a quantidade de vendas no último ano.
