@@ -1,0 +1,68 @@
+version: 2
+
+models:
+  - name: fct_sales
+    description: Fato com todas as informações das dimensões.
+    columns:
+      - name: sk_pedido_venda
+        description: É a chave primária da fato de vendas.
+        tests:
+          - unique
+          - not_null
+
+      - name: id_pedido_venda
+        description: É a chave primária da tabela de pedido de venda.
+
+      - name: fk_cartao_credito
+        description: É a chave primária da dimensão de cartão de crédito.
+
+      - name: fk_cliente
+        description: É a chave primária da dimensão de cliente.
+
+      - name: fk_produto
+        description: É a chave primária da dimensão de produto.
+
+      - name: fk_vendedor
+        description: É a chave primária da dimensão de vendedor.
+
+      - name: fk_motivo_venda
+        description: É a chave primária da dimensão de motivo de venda.
+
+      - name: fk_venda_territorio
+        description: É a chave primária da dimensão de venda por território.
+
+      - name: data_pedido
+        description: É a data que foi realizado o pedido.
+
+      - name: data_vencimento
+        description: É a data de vencimento do pagamento.
+
+      - name: data_envio
+        description: É a data de envio do produto.
+
+      - name: status_compra
+        description: É o status da compra.
+
+      - name: numero_ordem_compra
+        description: É o número da ordem de compra.
+
+      - name: subtotal
+        description: É a receita subtotal.
+
+      - name: taxa
+        description: É a taxa do produto.
+
+      - name: frete
+        description: É o valor do frete.
+
+      - name: receita_total
+        description: É a receita total da venda.
+
+      - name: quantidade_pedido
+        description: É a quantidade do pedido.
+
+      - name: preco_unitario
+        description: É o preço unitário de cada produto.
+
+      - name: desconto_preco_unitario
+        description: É o desconto que cada produto possui.

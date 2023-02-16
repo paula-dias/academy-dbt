@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: dim_product
+    description: Dimensão com as informações dos produtos.
+    columns:
+      - name: sk_produto
+        description: É a chave primária da dimensão de produto.
+        tests:
+          - unique
+          - not_null
+
+      - name: id_produto
+        description: É a chave primária da tabela de produtos.
+
+      - name: nome_produto
+        description: É o nome do produto.
+
+      - name: numero_produto
+        description: É o número do produto.
+
+      - name: custo_padrao
+        description: É o custo padrão do produto.
+
+      - name: preco_tabela
+        description: É o preço tabelado do produto.
+
+      - name: linha_produto
+        description: É a linha a qual o produto pertence.
+
+      - name: classe
+        description: É a classe a qual o produto pertence.
+
+      - name: estilo
+        description: É o estilo do produto.

@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: dim_customer
+    description: Dimensão com as informações dos clientes.
+    columns:
+      - name: sk_cliente
+        description: É a chave primária da dimensão de cliente.
+        tests:
+          - unique
+          - not_null
+
+      - name: id_cliente
+        description: É a chave primária da tabela cliente.
+
+      - name: id_informacao_pessoal
+        description: É a id referente as informações pessoais.
+        
+      - name: nome_completo
+        description: É o nome completo.

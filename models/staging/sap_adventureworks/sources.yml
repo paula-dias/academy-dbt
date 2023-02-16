@@ -1,0 +1,234 @@
+version: 2
+
+sources:
+  - name: sap
+    description: Banco réplica do sap da adventure works.
+    schema: sap_adw
+    tables:
+
+      - name: customer
+        description: Um cliente por linha.
+        columns:
+          - name: customerid
+            description: Id do cliente.
+            tests:
+              - unique
+              - not_null
+          - name: personid
+            description: Id de informações pessoais.
+
+      - name: person
+        description: Uma informação pessoal por linha.
+        columns:
+          - name: businessentityid
+            description: Id da entidade de negócio.
+            tests:
+              - unique
+              - not_null
+          - name: name
+            description: É o nome completo.
+
+      - name: salesreason
+        description: Tabela com informações dos motivos da venda.
+        columns:
+          - name: salesreasonid
+            description: Id do motivo da venda.
+            tests:
+              - unique
+              - not_null
+          - name: name
+            description: É o nome do motivo da venda.
+          - name: reasontype
+            description: Tipo de motivo de compra.
+
+      - name: salesperson
+        description: Um vendedor por linha.
+        columns:
+          - name: businessentityid
+            description: Id da entidade de negócio.
+            tests:
+              - unique
+              - not_null
+          - name: salesquota
+            description: Cota de vendas.
+          - name: bonus
+            description: Bonus recebido.
+          - name: commissionpct	
+            description: Comissão recebida.
+          - name: salesytd	
+            description: Vendas durante o ano atual.
+          - name: saleslastyear	
+            description: vendas no último ano.
+
+      - name: employee
+        description: Um funcionário por linha.
+        columns:
+          - name: businessentityid
+            description: Id da entidade de negócio.
+            tests:
+              - unique
+              - not_null
+          - name: nationalidnumber
+            description: É o código de identificação nacional.
+          - name: jobtitle
+            description: É o cargo que o funcionário exerce.
+
+      - name: stateprovince
+        description: Tabela com informações do estado.
+        columns:
+          - name: stateprovinceid
+            description: Id do estado.
+            tests:
+              - unique
+              - not_null
+          - name: stateprovincecode
+            description: É o código/sigla de identificação do estado.
+          - name: countryregioncode
+            description: É o código/sigla de identificação do pais.
+          - name: name
+            description: É o nome do estado
+          - name: territoryid
+            description: É a id do território.
+
+      - name: address
+        description: Tabela com informações de endereço.
+        columns:
+          - name: addressid	
+            description: Id do endereço.
+            tests:
+             - unique
+             - not_null
+          - name: addressline1	
+            description: Dados do endereço (rua, número...).
+          - name: city	
+            description: Nome da cidade.
+          - name: stateprovinceid	
+            description: Id do estado.
+
+      - name: countryregion
+        description: Tabela com informações do país.
+        columns:
+          - name: countryregioncode
+            description: Código do país.
+            tests:
+              - unique
+              - not_null
+          - name: name
+            description: É o nome do país.
+
+      - name: salesorderheader
+        description: Tabela com um pedido por linha.
+        columns:
+          - name: salesorderid
+            description: Id do pedido de venda.
+            tests:
+              - unique
+              - not_null
+          - name: orderdate
+            description: É a data da venda.
+          - name: duedate
+            description: É a data do vencimento.
+          - name: shipdate
+            description: É a data de entrega.
+          - name: status
+            description: É o status do pedido de compra.
+          - name: purchaseordernumber
+            description: É o número da ordem de compra.
+          - name: customerid
+            description: É a id do cliente.
+          - name: salespersonid
+            description: É a id do vendedor.
+          - name: territoryid
+            description: É a id do local.
+          - name: creditcardid
+            description: É o numero do cartão de crédito.
+          - name: subtotal
+            description: É o sutotal do valor da compra.
+          - name: taxamt
+            description: É a taxa cobrada.
+          - name: freight
+            description: É o valor do frete.
+          - name: totaldue
+            description: É o valor total do pedido.
+
+      - name: salesorderdetail
+        description: Tabela com informações detalhadas dos pedidos de venda.
+        columns:
+          - name: salesorderid
+            description: Id do pedido de venda.
+            tests:
+              - unique
+              - not_null
+          - name: productid
+            description: É a id do produto.
+          - name: orderqty
+            description: É a quantidade do pedido.
+          - name: unitprice	
+            description: É o preço unitário dos produtos.
+          - name: unitpricediscount
+            description: É o desconto do preço unitário.
+
+      - name: product
+        description: Tabela com informações sobre os produtos.
+        columns:
+          - name: productid
+            description: Id do produto.
+            tests:
+              - unique
+              - not_null
+          - name: name
+            description: Nome do produto.
+          - name: productnumber
+            description: Número do produto.
+          - name: standardcost
+            description: É custo padrão do produto.
+          - name: listprice
+            description: É o preço tabelado.
+          - name: productline
+            description: É linha que o produto pertence.
+          - name: class
+            description: É a classe que o produto está classificado.
+          - name: style
+            description: É o estilo do produto.
+
+      - name: creditcard
+        description: Tabela com informações dos cartões de crédito.
+        columns:
+          - name: creditcardid
+            description: É a id do cartão de crédito.
+            tests:
+              - unique
+              - not_null
+          - name: cardtype
+            description: É o tipo de cartão de crédito.
+
+      - name: salesterritory
+        description: Tabela com informações dos territórios de vendas.
+        columns:
+          - name: territoryid
+            description: É a id do território.
+            tests:
+              - unique
+              - not_null
+          - name: name
+            description: É o nome do território.
+          - name: countryregioncode
+            description: É o código do país.
+          - name: salesytd
+            description: É a quantidade de vendas durante o ano atual.
+          - name: saleslastyear
+            description: É a quantidade de vendas do último ano.
+          
+      - name: salesorderheadersalesreason
+        description: É a tabela com as id's de pedido de venda e motivo da venda.
+        columns:
+          - name: salesorderid
+            description: É a id do pedido de venda.
+            tests:
+              - unique
+              - not_null
+          - name: salesreasonid 
+            description: É a id do motivo da venda.
+            tests:
+              - unique
+              - not_null
