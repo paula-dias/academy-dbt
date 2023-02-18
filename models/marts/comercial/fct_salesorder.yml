@@ -1,8 +1,8 @@
 version: 2
 
 models:
-  - name: fct_sales
-    description: Fato com todas as informações das dimensões.
+  - name: fct_salesorder
+    description: Fato com todas as informações das dimensões cartão de crédito, cliente, vendedor e motivo de venda.
     columns:
       - name: sk_pedido_venda
         description: É a chave primária da fato de vendas.
@@ -19,17 +19,14 @@ models:
       - name: fk_cliente
         description: É a chave primária da dimensão de cliente.
 
-      - name: fk_produto
-        description: É a chave primária da dimensão de produto.
-
       - name: fk_vendedor
         description: É a chave primária da dimensão de vendedor.
 
       - name: fk_motivo_venda
         description: É a chave primária da dimensão de motivo de venda.
 
-      - name: fk_venda_territorio
-        description: É a chave primária da dimensão de venda por território.
+      - name: fk_territorio
+        description: É a chave primária da dimensão de território.
 
       - name: data_pedido
         description: É a data que foi realizado o pedido.
@@ -57,12 +54,3 @@ models:
 
       - name: receita_total
         description: É a receita total da venda.
-
-      - name: quantidade_pedido
-        description: É a quantidade do pedido.
-
-      - name: preco_unitario
-        description: É o preço unitário de cada produto.
-
-      - name: desconto_preco_unitario
-        description: É o desconto que cada produto possui.

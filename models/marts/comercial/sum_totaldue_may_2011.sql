@@ -4,8 +4,8 @@ with
     sum_receita_total as (
         select
             sum(receita_total) as cnt
-        from {{ ref ('fct_sales') }}
+        from {{ ref ('fct_salesorder') }}
         where data_pedido
-        between '2011-05-01 00:00:00.000' and '2011-05-31 00:00:00.000'
+        between '2011-05-01' and '2011-05-31'
     )
 select * from sum_receita_total where cnt != 567020.9498

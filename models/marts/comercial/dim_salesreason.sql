@@ -9,16 +9,14 @@ with
     , motivo_venda as (
         select
             id_motivo_venda
-            , nome_motivo
             , tipo_motivo
         from {{ ref('stg_sap__salesreason') }}
     )
 
     , tabela_resultante as (
-        select
+        select distinct
             pedido_razao.id_pedido_venda
             , pedido_razao.id_motivo_venda
-            , motivo_venda.nome_motivo
             , motivo_venda.tipo_motivo
         from pedido_razao
         left join motivo_venda on pedido_razao.id_motivo_venda = motivo_venda.id_motivo_venda
@@ -26,7 +24,7 @@ with
 
     , transformacoes as (
         select
-            row_number() over (order by id_motivo_venda) as sk_motivo_venda
+            row_number() over (order by id_pedido_venda) as sk_motivo_venda
             , *
         from tabela_resultante
     )
