@@ -1,9 +1,7 @@
 with
     cidade as (
         select
-            id_endereco
-            , id_estado
-            , endereco
+            id_estado
             , nome_cidade
         from {{ ref('stg_sap__address') }}
     )
@@ -20,10 +18,8 @@ with
 
     , cidade_estado as (
         select
-            cidade.id_endereco
-            , cidade.id_estado
+            cidade.id_estado
             , estado.id_territorio
-            , cidade.endereco
             , cidade.nome_cidade
             , estado.codigo_estado
             , estado.codigo_pais
@@ -42,11 +38,9 @@ with
     , localizacao as (
         select
             pais.codigo_pais
-            , cidade_estado.id_endereco
             , cidade_estado.id_estado
             , cidade_estado.id_territorio
             , pais.nome_pais
-            , cidade_estado.endereco
             , cidade_estado.nome_cidade
             , cidade_estado.codigo_estado
             , cidade_estado.nome_estado
@@ -59,21 +53,15 @@ with
             id_territorio
             , nome_territorio
             , codigo_pais
-            , vendas_ano
-            , vendas_ultimo_ano
         from {{ ref('stg_sap__salesterritory') }}
     )
 
     , localizacao_venda as (
-        select
+        select distinct
             venda_territorio.id_territorio
-            , localizacao.id_endereco
             , localizacao.id_estado
             , venda_territorio.nome_territorio
             , venda_territorio.codigo_pais
-            , venda_territorio.vendas_ano
-            , venda_territorio.vendas_ultimo_ano
-            , localizacao.endereco
             , localizacao.nome_cidade
             , localizacao.codigo_estado
             , localizacao.nome_estado
@@ -83,8 +71,8 @@ with
     )
 
     , transformacoes as (
-        select
-            row_number() over (order by id_territorio) as sk_venda_territorio
+        select distinct
+            row_number() over (order by id_territorio) as sk_territorio
             , *
         from localizacao_venda
     )

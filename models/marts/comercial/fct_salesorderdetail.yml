@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: fct_salesorderdetail
+    description: Fato com todas as informações da dimensão de produto e da fato ordem de venda.
+    columns:
+      - name: sk_pedido_venda_produto
+        description: É a chave primária da fato de ordem de vendas detalhado.
+        tests:
+          - unique
+          - not_null
+
+      - name: fk_produto
+        description: É a chave primária da dimensão de produto.
+      
+      - name: fk_pedido_venda
+        description: É a chave primária da dimensão de pedido de venda.
+
+      - name: quantidade_pedido
+        description: Quantidade do pedido.
+
+      - name: preco_unitario
+        description: É o preço unitário de cada produto.
+
+      - name: desconto_preco_unitario
+        description: É o desconto que cada produto possui.

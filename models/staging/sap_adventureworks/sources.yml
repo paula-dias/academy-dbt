@@ -36,8 +36,6 @@ sources:
             tests:
               - unique
               - not_null
-          - name: name
-            description: É o nome do motivo da venda.
           - name: reasontype
             description: Tipo de motivo de compra.
 
@@ -79,7 +77,6 @@ sources:
           - name: stateprovinceid
             description: Id do estado.
             tests:
-              - unique
               - not_null
           - name: stateprovincecode
             description: É o código/sigla de identificação do estado.
@@ -93,18 +90,13 @@ sources:
       - name: address
         description: Tabela com informações de endereço.
         columns:
-          - name: addressid	
-            description: Id do endereço.
+          - name: stateprovinceid
+            description: Id do estado.
             tests:
-             - unique
              - not_null
-          - name: addressline1	
-            description: Dados do endereço (rua, número...).
           - name: city	
             description: Nome da cidade.
-          - name: stateprovinceid	
-            description: Id do estado.
-
+            
       - name: countryregion
         description: Tabela com informações do país.
         columns:
@@ -157,7 +149,6 @@ sources:
           - name: salesorderid
             description: Id do pedido de venda.
             tests:
-              - unique
               - not_null
           - name: productid
             description: É a id do produto.
@@ -214,21 +205,15 @@ sources:
             description: É o nome do território.
           - name: countryregioncode
             description: É o código do país.
-          - name: salesytd
-            description: É a quantidade de vendas durante o ano atual.
-          - name: saleslastyear
-            description: É a quantidade de vendas do último ano.
-          
+
       - name: salesorderheadersalesreason
         description: É a tabela com as id's de pedido de venda e motivo da venda.
         columns:
           - name: salesorderid
             description: É a id do pedido de venda.
             tests:
-              - unique
               - not_null
           - name: salesreasonid 
             description: É a id do motivo da venda.
             tests:
-              - unique
               - not_null

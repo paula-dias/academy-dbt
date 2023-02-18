@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: dim_territory
+    description: Dimensão com as informações de localização.
+    columns:
+      - name: sk_territorio
+        description: É a chave primária da dimensão de território.
+        tests:
+          - unique
+          - not_null
+
+      - name: id_estado
+        description: É a chave primária da tabela de estado.
+
+      - name: codigo_estado
+        description: É o código do estado.
+        
+      - name: codigo_pais
+        description: É o código do país.
+
+      - name: nome_cidade
+        description: É o nome da cidade.
+
+      - name: nome_estado
+        description: É o nome do estado.
+
+      - name: nome_pais
+        description: É o nome do país.
+
+      - name: nome_territorio
+        description: É o nome do território.

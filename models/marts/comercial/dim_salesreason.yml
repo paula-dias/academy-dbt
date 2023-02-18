@@ -10,8 +10,8 @@ models:
           - unique
           - not_null
 
-      - name: id_pedido_venda
-        description: É a id do pedido de venda.
+      - name: id_motivo_venda
+        description: É a id do motivo de venda.
 
       - name: nome_motivo
         description: É o nome do motivo da venda.
